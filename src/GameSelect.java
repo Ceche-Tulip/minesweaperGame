@@ -36,6 +36,8 @@ public class GameSelect {
         GameUtil.drawWord(g, "Comment", 220, 250, 30, Color.black);
         g.drawRect(100, 350, 300, 100);
         GameUtil.drawWord(g, "Hard", 220, 400, 30, Color.black);
+        g.drawRect(100, 500, 300, 100);
+        GameUtil.drawWord(g, "游戏制作人：Herwin", 100, 565, 30, Color.black);
     }
 
     // 重置参数的方法(方法重载)

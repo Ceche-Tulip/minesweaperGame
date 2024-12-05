@@ -31,7 +31,7 @@ public class MapButtom {
     void paintSelf(Graphics g) {
         g.setColor(Color.red); // 颜色
         // 画竖线
-        for (int i = 0; i <= GameUtil.MAP_H; i++) {
+        for (int i = 0; i <= GameUtil.MAP_W; i++) {
             g.drawLine(GameUtil.OFFSET + i * GameUtil.SQUARE_LENGTH, // 左下角
                     3 * GameUtil.OFFSET, // 左上角
                     GameUtil.OFFSET + i * GameUtil.SQUARE_LENGTH, // 右上角

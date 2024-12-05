@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 
 public class GameWin extends JFrame {
 
-    int wight = 2 * GameUtil.OFFSET + GameUtil.MAP_W * GameUtil.SQUARE_LENGTH; // 窗口宽度
+    int width = 2 * GameUtil.OFFSET + GameUtil.MAP_W * GameUtil.SQUARE_LENGTH; // 窗口宽度
     int height = 4 * GameUtil.OFFSET + GameUtil.MAP_H * GameUtil.SQUARE_LENGTH; // 窗口高度
 
     Image offScreenImage = null; // 离屏图像
@@ -25,9 +25,9 @@ public class GameWin extends JFrame {
 
         this.setVisible(true); // 设置窗口是否可见
         if (GameUtil.state == 3) { // 在游戏选择的时候
-            this.setSize(500, 500); // 设置选择游戏难度窗口大小
+            this.setSize(500, 650); // 设置选择游戏难度窗口大小
         } else {
-            this.setSize(wight, height); // 设置游戏中窗口大小
+            this.setSize(width, height); // 设置游戏中窗口大小
         }
         this.setLocationRelativeTo(null); // 设置窗口位置
         this.setTitle("Peking's_Game"); // 设置窗口标题
@@ -121,25 +121,47 @@ public class GameWin extends JFrame {
         }
     }
 
+    // @Override
+    // public void paint(Graphics g) {
+    // if (GameUtil.state == 3) { // 如果选择难度
+    // g.setColor(Color.white); // 设置窗口为白色
+    // g.fillRect(0, 0, 500, 500); // 填充
+    // gameSelect.paintSelf(g); // 绘制游戏选择
+    // } else {
+
+    // offScreenImage = this.createImage(width, height); // 创建离屏图像
+    // Graphics gImage = offScreenImage.getGraphics(); // 获取离屏图像的画笔
+
+    // // 设置背景颜色
+    // gImage.setColor(Color.white);
+    // gImage.fillRect(0, 0, width, height);
+
+    // mapButton.paintSelf(gImage); // 绘制地图按钮
+    // mapTop.paintSelf(gImage); // 绘制地图顶部
+    // g.drawImage(offScreenImage, 0, 0, null);
+    // }
+    // }
     @Override
     public void paint(Graphics g) {
+        // 创建离屏图像
+        offScreenImage = this.createImage(width, height);
+        Graphics gImage = offScreenImage.getGraphics(); // 获取离屏图像的画笔
+
+        // 设置背景颜色
+        gImage.setColor(Color.white);
+        gImage.fillRect(0, 0, width, height);
+
         if (GameUtil.state == 3) { // 如果选择难度
-            g.setColor(Color.white); // 设置窗口为白色
-            g.fillRect(0, 0, 500, 500); // 填充
-            gameSelect.paintSelf(g); // 绘制游戏选择
+            gImage.setColor(Color.white); // 设置窗口为白色
+            gImage.fillRect(0, 0, 500, 500); // 填充
+            gameSelect.paintSelf(gImage); // 绘制游戏选择
         } else {
-
-            offScreenImage = this.createImage(wight, height); // 创建离屏图像
-            Graphics gImage = offScreenImage.getGraphics(); // 获取离屏图像的画笔
-
-            // 设置背景颜色
-            gImage.setColor(Color.white);
-            gImage.fillRect(0, 0, wight, height);
-
             mapButton.paintSelf(gImage); // 绘制地图按钮
             mapTop.paintSelf(gImage); // 绘制地图顶部
-            g.drawImage(offScreenImage, 0, 0, null);
         }
+
+        // 将离屏图像绘制到屏幕上
+        g.drawImage(offScreenImage, 0, 0, null);
     }
 
     public static void main(String[] args) {
