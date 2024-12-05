@@ -100,6 +100,19 @@ public class MapTop {
                     }
                 }
             }
+            if (count == GameUtil.DATA_BOTTOM[x][y]) {
+                for (int i = x - 1; i <= x + 1; i++) {
+                    for (int j = y - 1; j <= y + 1; j++) {
+                        if (GameUtil.DATA_TOP[i][j] != 1) { // 如果格子没有被插旗
+                            GameUtil.DATA_TOP[i][j] = -1;
+                        }
+                        // 必须在雷区中,打开空格
+                        if (i >= 1 && j >= 1 && i <= GameUtil.MAP_W && j <= GameUtil.MAP_H) {
+                            spaceOpen(i, j); // 调用自己
+                        }
+                    }
+                }
+            }
 
             for (int i = x - 1; i <= x + 1; i++) {
                 for (int j = y - 1; j <= y + 1; j++) {
