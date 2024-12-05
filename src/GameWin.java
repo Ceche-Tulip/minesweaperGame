@@ -13,7 +13,7 @@ public class GameWin extends JFrame {
 
     Image offScreenImage = null; // 离屏图像
 
-    MapButtom mapButton = new MapButtom(); // 地图按钮
+    MapBottom mapButton = new MapBottom(); // 地图按钮
     MapTop mapTop = new MapTop(); // 地图顶部
     GameSelect gameSelect = new GameSelect(); // 游戏选择
 
